@@ -1,0 +1,20 @@
+  
+.list {
+  background-color: #f5f5f5ad;
+  border-radius: 10px;
+  box-shadow: 0.1em 0.1em 0.5em lightgrey;
+  height: 80vh;
+  margin: 5px;
+  padding: 1em;
+  width: 350px;
+    
+  &__title {
+    margin: 0;
+    padding: 16px 0;
+  }
+  
+  &__tasks {
+    height: 60vh;
+    overflow-y: auto;
+  }
+}
