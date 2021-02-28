@@ -5,8 +5,9 @@ import { MaterialCdkModule } from "./../material-cdk/material-cdk.module";
 
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { ModalComponent } from './components/modal/modal.component';
 
-const declarables = [ HeaderComponent, FooterComponent ];
+const declarables = [ HeaderComponent, FooterComponent, ModalComponent ];
 @NgModule({
   declarations: [declarables],
   imports: [

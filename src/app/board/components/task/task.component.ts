@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { TaskSchema } from "./../../../core";
-
+import { MatDialog } from '@angular/material/dialog';
+import { ModalComponent } from 'src/app/shared/components/modal/modal.component';
 @Component({
   selector: 'app-task',
   templateUrl: './task.component.html',
@@ -11,13 +12,21 @@ export class TaskComponent implements OnInit {
   @Output() editTask: EventEmitter<TaskSchema> = new EventEmitter();
 
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
   }
 
   handleEditTask(task: TaskSchema){
     this.editTask.emit(task);
+  }
+
+  removeTask(taskId: string): void {
+    console.log('Eliminar tarea', taskId);
+    const dialogRef = this.dialog.open(ModalComponent);
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('Eliminar tarea', result);
+    });
   }
 
 }
