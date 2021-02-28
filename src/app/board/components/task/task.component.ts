@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { TaskSchema } from "./../../../core";
 
 @Component({
@@ -8,9 +8,16 @@ import { TaskSchema } from "./../../../core";
 })
 export class TaskComponent implements OnInit {
   @Input() task: TaskSchema;
+  @Output() editTask: EventEmitter<TaskSchema> = new EventEmitter();
+
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  handleEditTask(task: TaskSchema){
+    this.editTask.emit(task);
   }
 
 }

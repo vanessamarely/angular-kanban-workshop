@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { ListSchema } from './../../../core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ListSchema, TaskSchema } from './../../../core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 
 @Component({
@@ -9,7 +9,7 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
 })
 export class ListComponent implements OnInit {
   @Input() list: ListSchema;
-  
+  @Output() editTask: EventEmitter<TaskSchema> = new EventEmitter();
 
   constructor() {}
 
@@ -24,6 +24,10 @@ export class ListComponent implements OnInit {
                         event.previousIndex,
                         event.currentIndex);
     }
+  }
+
+  handleEdit(task: TaskSchema){
+    this.editTask.emit(task);
   }
 
  
