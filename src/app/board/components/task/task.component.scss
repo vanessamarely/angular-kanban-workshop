@@ -1,0 +1,35 @@
+.task {
+	background: white;
+	border-radius: 5px;
+	box-shadow: 0.1em 0.1em 0.5em lightgrey;
+	color: #333;
+	display: flex;
+	flex-wrap: wrap;
+	margin: 0 0 6px 0;
+	padding: 6px 6px 2px 8px;
+	
+	&--urgent {
+		border-left: 5px solid salmon;
+	}
+
+	&--moderate {
+		border-left: 5px solid lightseagreen;
+	}
+
+	&--low {
+		border-left: 5px solid lightgoldenrodyellow;
+	}
+
+	&__title {
+		flex: 1 1 40%;
+		font-weight: bold;
+		text-align: center;
+	}
+	&__icon {
+		flex: 1 1 20%;
+		text-align: left;
+	}
+	&__date, &__description {
+		flex: 1 1 100%;
+	}
+}

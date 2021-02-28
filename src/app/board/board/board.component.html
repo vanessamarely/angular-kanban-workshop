@@ -1,3 +1,27 @@
-<main class="board">
-  <app-list></app-list>
+<main class="board" cdkDropListGroup>
+  <button
+    class="board__add"
+    cdkOverlayOrigin
+    (click)="displayOverlay()"
+    #trigger="cdkOverlayOrigin"
+    mat-raised-button
+    color="primary"
+  >
+    Añadir Tarea
+  </button>
+  <section class="board__list">
+    <app-list *ngFor="let list of lists" [list]="list"></app-list>
+  </section>
+  <ng-template
+    #connectedOverlay="cdkConnectedOverlay"
+    cdkConnectedOverlay
+    [cdkConnectedOverlayOrigin]="trigger"
+    [cdkConnectedOverlayOpen]="isOverlayDisplayed"
+    [cdkConnectedOverlayHasBackdrop]="overlayOptions.hasBackdrop"
+    [cdkConnectedOverlayPositions]="overlayOptions.positions"
+    (backdropClick)="hideOverlay()"
+    (detach)="hideOverlay()"
+  >
+    <app-create-task [connectedOverlay]="connectedOverlay"></app-create-task>
+  </ng-template>
 </main>
