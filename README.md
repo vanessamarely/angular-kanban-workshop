@@ -46,6 +46,6 @@ Ejecuta `ng test` para ejecutar los test con Karma [Karma](https://karma-runner.
 
 Ejecutar `ng e2e` para los  end-to-end con Protactor[Protractor](http://www.protractortest.org/).
 
-### help
+### Help
 
 Para las ayudas del CLI usa `ng help` o se puede visitar la página oficial [Angular CLI Overview and Command Reference](https://angular.io/cli).
