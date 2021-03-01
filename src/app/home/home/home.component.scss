@@ -1,0 +1,15 @@
+.home {
+  padding: 2em;
+  &__title {
+    text-align: center;
+  }
+  &__task-list {
+    display: flex;
+    flex-wrap: wrap;
+    
+    &__task {
+      min-width: 30%;
+      margin: 1em;
+    }
+  }
+}

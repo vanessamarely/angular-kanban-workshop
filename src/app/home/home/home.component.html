@@ -1,1 +1,28 @@
-<p>home works!</p>
+<main class="home">
+  <h1 class="home__title">Kanban</h1>
+  <p>En nuestro día a día siempre tenemos que realizar diferentes tipos de tareas y priorizarlas y dejarlas por escrito nos ayuda a abordarlas mucho más rápido y lograr su realización</p>
+  <p>Por ello en este tablero te invitamos a organizar tu día a día</p>
+  <section>
+    <h2>Lista de tareas</h2>
+    <div class="home__task-list">
+      <mat-task class="home__task-list__task" *ngFor="let task of taskList">
+        <mat-task-header>
+          <mat-task-title>
+            <div class="task__task-list__icon">
+              <mat-icon aria-hidden="false" aria-label="urgent icon" *ngIf="task.priority === 'urgent'">alarm</mat-icon>
+              <mat-icon aria-hidden="false" aria-label="medium icon" *ngIf="task.priority === 'moderate'">autorenew</mat-icon>
+              <mat-icon aria-hidden="false" aria-label="medium icon" *ngIf="task.priority === 'low'">assignment_returned</mat-icon>
+              <span>Tarea</span>
+            </div>
+          </mat-task-title>
+          <mat-task-subtitle class="task__task-list__subtitle"><strong>Fecha de finalización:</strong> {{ task.date | date }}</mat-task-subtitle>
+        </mat-task-header>
+        <mat-task-content>
+          <p class="task__task-list__description">
+            {{task.description}}
+          </p>
+        </mat-task-content>
+      </mat-task>
+    </div>
+  </section>
+</main>
