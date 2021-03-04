@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService, ListSchema, TaskSchema } from './../../core';
+import { TaskService } from 'src/app/core/services/task.service';
 import { CdkConnectedOverlay } from '@angular/cdk/overlay';
 
 const initialValue = {
@@ -23,23 +24,34 @@ export class BoardComponent implements OnInit {
       { originX: 'start', originY: 'top', overlayX: 'start', overlayY: 'top' },
     ],
   };
+  listId: string;
 
-  constructor(private apiService: ApiService) {
+  constructor(private apiService: ApiService, private taskService: TaskService) {
     this.task = initialValue;
+    this.lists = [];
   }
 
   ngOnInit(): void {
-    this.getDataList();
+    // this.getDataList();
+    this.getDataStored();
   }
 
   getDataList(): void {
     this.apiService.getApi().subscribe(
       (response: any) => (this.lists = response['list']),
-      (error) => console.log('Ups! we have an error: ', error)
+      (error: string) => console.log('Ups! we have an error: ', error)
     );
   }
 
-  displayOverlay(event?: any): void {
+  getDataStored(): void {
+    this.taskService.getBoardList$
+      .subscribe(
+        (response: any) => this.lists = response,
+        (error: string) => (console.log('Ups! we have an error: ', error))
+    );
+  }
+
+  displayOverlay(event?: TaskSchema): void {
     this.isOverlayDisplayed = true;
     if (!!event) {
       this.task = {
@@ -48,6 +60,10 @@ export class BoardComponent implements OnInit {
         description: event.description,
         priority: event.priority,
       };
+      if(event.listId){
+        this.listId = event.listId;
+      }
+      
     } else {
       this.task = initialValue;
     }

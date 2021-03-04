@@ -1,6 +1,7 @@
 export interface TaskSchema {
   id: string;
   description: string;
-  date: string;
+  date: Date | string;
   priority: string;
+  listId?: string;
 }

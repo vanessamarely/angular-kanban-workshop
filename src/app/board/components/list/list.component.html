@@ -9,6 +9,12 @@
     <strong>{{ list.name }}</strong>
   </h3>
   <div class="list__tasks">
-    <app-task *ngFor="let task of list.tasks" [task]="task" (editTask)="handleEdit(task)" cdkDrag></app-task>
+    <app-task
+      *ngFor="let task of list.tasks"
+      [task]="task"
+      [list]="list"
+      (editTask)="handleEdit(task)"
+      cdkDrag
+    ></app-task>
   </div>
 </div>
