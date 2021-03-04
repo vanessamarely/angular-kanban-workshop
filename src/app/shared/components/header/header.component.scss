@@ -1,0 +1,28 @@
+.toolbar {
+  display: flex;
+  &__spacer {
+    flex: 1 1 auto;
+  }
+  &__menu {
+    margin: 0 auto;
+    list-style:none;
+    ul {
+      display: flex;
+      list-style:none;
+    }
+    &__icon{
+      border:0;
+      background-color: transparent;
+      color: white;
+      vertical-align: middle;
+    }
+    &__text {
+      color: white;
+      text-decoration: none;
+      vertical-align: middle;
+      &.active {
+        text-decoration: underline ;
+      }
+    }
+  }
+}

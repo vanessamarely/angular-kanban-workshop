@@ -1,0 +1,40 @@
+<mat-toolbar color="primary" class="toolbar">
+  <span>Kanban</span>
+  <span class="toolbar__spacer"></span>
+  <nav class="toolbar__menu">
+    <ul>
+      <li>
+        <a
+          href="#"
+          routerLink="/home"
+          routerLinkActive="active"
+          class="toolbar__menu__text"
+        >
+          <button
+            mat-icon-button
+            class="toolbar__menu__icon favorite-icon"
+            aria-label="Home option"
+          >
+            <mat-icon>home</mat-icon>
+          </button>
+          <span>Inicio</span>
+        </a>
+      </li>
+      <li>
+        <a
+          href="#"
+          routerLink="/board"
+          routerLinkActive="active"
+          class="toolbar__menu__text"
+          ><button
+            mat-icon-button
+            class="toolbar__menu__icon"
+            aria-label="Board option"
+          >
+            <mat-icon>note</mat-icon></button
+          ><span> Tablero</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</mat-toolbar>

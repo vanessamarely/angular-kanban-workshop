@@ -1,0 +1,74 @@
+<form
+  class="form"
+  [formGroup]="createTask"
+  (ngSubmit)="onFormAdd(createTask.value)"
+  novalidate
+>
+  <header class="form__header">
+    <h3 class="form__header__title">{{ formText }} Tarea</h3>
+    <button
+      class="form__header__close-button"
+      mat-raised-button
+      (click)="close()"
+    >
+      <mat-icon aria-hidden="false" aria-label="close icon">close</mat-icon>
+    </button>
+  </header>
+  <section class="form__fields">
+    <mat-form-field class="form__fields__item" appearance="fill">
+      <mat-label>Fecha</mat-label>
+      <input
+        matInput
+        placeholder="Fecha"
+        formControlName="date"
+        [matDatepicker]="picker"
+      />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error> Fecha es <strong>requerida</strong> </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="form__fields__item" appearance="fill">
+      <mat-label>Seleccione una prioridad</mat-label>
+      <select
+        matNativeControl
+        [(ngModel)]="selectedPriority"
+        name="priority"
+        formControlName="priority"
+      >
+        <option value="" selected></option>
+        <option *ngFor="let priority of priorities" [value]="priority.value">
+          {{ priority.viewValue }}
+        </option>
+      </select>
+      <mat-error> Prioridad es <strong>requerida</strong> </mat-error>
+    </mat-form-field>
+
+    <mat-form-field
+      class="form__fields__item"
+      appearance="fill"
+      color="primary"
+    >
+      <mat-label>Descripción</mat-label>
+      <textarea
+        matInput
+        formControlName="description"
+        cdkTextareaAutosize
+        #autosize="cdkTextareaAutosize"
+        cdkAutosizeMinRows="1"
+        cdkAutosizeMaxRows="5"
+      >
+      </textarea>
+      <mat-error> Descripcion es <strong>requerida</strong> </mat-error>
+    </mat-form-field>
+
+    <button
+      class="form__fields__button"
+      mat-raised-button
+      color="primary"
+      [disabled]="!createTask.valid"
+    >
+    {{formText}}
+    </button>
+  </section>
+</form>

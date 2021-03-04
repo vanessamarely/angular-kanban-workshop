@@ -1,0 +1,80 @@
+@mixin header {
+  display: block;
+  padding: 1em;
+}
+
+.home {
+  padding: 2em;
+  margin-bottom: 6em;
+  &__title {
+    border-bottom: 1px solid #d3d3d3;
+    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2);
+    font-size: 3em;
+    padding-bottom: .5em;
+    text-align: center;
+  }
+  &__task-list {
+    &__buttons {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      .option-button {
+        min-width: 30%;
+      }
+    }
+    &__container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+
+      .task {
+        border-radius: 5px;
+        box-shadow: 0.1em 0.1em 0.5em lightgrey;
+        margin: 1em;
+        padding: 1em;
+
+        &__header {
+          
+          &--urgent {
+            border-bottom: 5px solid salmon;
+            @include header;
+          }
+        
+          &--moderate {
+            border-bottom: 5px solid lightseagreen;
+            @include header;
+          }
+        
+          &--low {
+            border-bottom: 5px solid lightgoldenrodyellow;
+            @include header;
+          }
+
+          .task-title {
+            &__icon {
+              margin-right: .5em;
+              vertical-align: middle;
+            }
+
+          }
+        }
+
+        &__content{
+          display: block;
+          padding: 1em;
+        }
+      }
+      
+    }
+    &__message {
+      box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+      border-radius: 5px;
+      margin-top: 2em;
+      padding: 2em;
+      .text {
+        font-size: 1.5em;
+        text-align: center;
+      }
+    }
+  }
+}

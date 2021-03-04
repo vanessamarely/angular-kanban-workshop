@@ -1,0 +1,20 @@
+<div
+  class="list"
+  id="list_{{ list.id }}"
+  cdkDropList
+  [cdkDropListData]="list.tasks"
+  (cdkDropListDropped)="drop($event)"
+>
+  <h3 class="list__title">
+    <strong>{{ list.name }}</strong>
+  </h3>
+  <div class="list__tasks">
+    <app-task
+      *ngFor="let task of list.tasks"
+      [task]="task"
+      [list]="list"
+      (editTask)="handleEdit(task)"
+      cdkDrag
+    ></app-task>
+  </div>
+</div>
